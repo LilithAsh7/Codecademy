@@ -1,10 +1,10 @@
-function randomMessage(){
-    //const messageFunctions = [randomAdLib, randomOminousMessage, randomJoke]
-    const messageFunctions = [randomOminousMessage]
+function pickRandomMessage(){
+    const messageFunctions = [randomAdLib, randomOminousMessage, randomJoke]
     return getRandomElement(messageFunctions)();
 }
 
 function randomAdLib(){
+    const type = "AdLib"
     const singularNouns = ["fish", "elephant", "boy", "girl", "berson", "banana", "tent pole", "grinkle-snout", "geometric horror"]
     const singularNoun1 = getRandomElement(singularNouns)
     const singularNoun2 = getRandomElement(singularNouns)
@@ -35,12 +35,12 @@ The ${singularNoun1} replied "Don't you remember me? We ${verbEd} beside each ot
 The creature flipped it's ${appendage} one more time and said "How could I remember you. You and I are the same ${singularNoun1}."
 Then the mirror shattered and revealed a ${singularNoun2} enjoying an afternoon of ${adverb} ${verbIng}.
 Behind them sat their ${thingy}, which watched peacefully and ate ${food}.`
-    console.log(message)
-    return message
+    returnValue = [message, type]
+    return returnValue
 }
 
 function randomOminousMessage(){
-    console.log("Ominous function starting")
+    const type = "Ominous"
     let num = Math.floor(Math.random() * 5)
     while (num === 0 || num === 1){
         num = Math.floor(Math.random() * 5)
@@ -59,12 +59,24 @@ function randomOminousMessage(){
     }
 
     message = `In ${num} weeks you will see a ${portant}. It will be a portant of iminent ${badThingy1}. ${badThingy3} will rain down in your world and you will know the true meaning of ${badThingy2}.`
-    console.log(message)
-    return message
+    returnValue = [message, type]
+    return returnValue
 }
 
 function randomJoke(){
-    console.log("Joke function starting") 
+    const type = "Joke"
+    const singularNouns = ["man", "woman", "person", "camera", "TV", "fish", "MMO player", "guy with a laundry machine", "worm"]
+    const singularNoun = getRandomElement(singularNouns)
+    const locations = ["bar", "shop", "monument", "museum", "random house", "neighbors house", "high school assembly", "full concert hall", "empty concert hall"]
+    const location = getRandomElement(locations)
+    const pluralThings = ["jobs", "skinny people", "new words", "spilled alcohol", "grimey surfaces", "locked bathrooms", "road trips", "forests", "global warming"]
+    const pluralThing = getRandomElement(pluralThings)
+    const verbEds = ["blinked", "wrinkled their brows", "whispered indecent thoughts", "made crazy eyes", "burst into tears", "became suddenly and intensely afraid"]
+    const verbEd = getRandomElement(verbEds)
+
+    const message = `A ${singularNoun} walks into a ${location} and says "Hey! What's with all the ${pluralThing}?" Everyone looked at each other and ${verbEd}, until suddenly someone stood up and shouted "They're all UNDEFINED."`
+    returnValue = [message, type]
+    return returnValue
 }
 
 function getRandomElement(arr){
@@ -77,5 +89,11 @@ function firstLetterUpperCase(word){
     word = word.join("")
     return word
 }
+/*
+function main(){
+    messageAndType = pickRandomMessage()
+    message = messageAndType[0]
+    type = messageAndType[1]
 
-randomMessage();
+    if type 
+}*/

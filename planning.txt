@@ -6,11 +6,19 @@ XXX1. Plan project (This file)
 XXX2. Set up html file and css file for styling
     XXXa. On startup it will say "Click button for new message"
 XXX3. Set up version control with git and github
-4. Set up logic in javascript for designing the message
+XXX4. Set up logic in javascript for designing the message
     XXXa. Create a function to randomly pick which message generator to use
-    b. Create a function for each type of message that constructs the message
-    c. Create the strings that hold the words to be randomly selected and create a random selector function to select a random word from the required string.
-5. Set up code to update html with the new message and it's type.
+    XXXb. Create a function for each type of message that constructs the message
+    XXXc. Create the strings that hold the words to be randomly selected and create a random selector function to select a random word from the required string.
+5. Set up code to update html with the new message and it's picture based on type.
+
+Main function:
+
+-Generates new message
+-Picks corresponding image
+-Updates src of html image
+-Updates innerHTML of <h3> where message goes.
+
 
 Adlib story vars:
 -A singular noun
