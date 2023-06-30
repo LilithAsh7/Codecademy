@@ -89,11 +89,25 @@ function firstLetterUpperCase(word){
     word = word.join("")
     return word
 }
-/*
-function main(){
+
+function theStart(){
+    let picture = document.getElementById("picture")
+    let messageLocation = document.querySelector("h4")
+    
     messageAndType = pickRandomMessage()
     message = messageAndType[0]
     type = messageAndType[1]
 
-    if type 
-}*/
+    if (type === "AdLib"){
+        picture.src = "./pictures/cute.jpg"
+    } else if (type === "Joke"){
+        picture.src = "./pictures/funny.jpg"
+    } else {
+        picture.src = "./pictures/obelisk.jpg"
+    }
+
+    messageLocation.innerHTML = message
+}
+
+let button = document.getElementById("button")
+button.onclick = theStart
