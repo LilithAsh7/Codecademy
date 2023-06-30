@@ -1,0 +1,13 @@
+End goal: local webpage that displays a randomly filled in ad-lib, nonsensical joke, or ominous message. There will be a button you can press to generate a new message.
+Built with Javascript, html, and css
+
+Steps:
+1. Plan project (This file)
+2. Set up html file and css file for styling
+    a. On startup it will say "Click button for new message"
+3. Set up version control with git and github
+4. Set up logic in javascript for designing the message
+    a. Create a function to randomly pick which message generator to use
+    b. Create a function for each type of message that constructs the message
+    c. Create the strings that hold the words to be randomly selected and create a random selector function to select a random word from the required string.
+5. Set up code to update html with the new message and it's type.
