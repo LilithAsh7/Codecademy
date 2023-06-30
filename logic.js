@@ -1,11 +1,10 @@
 function randomMessage(){
     //const messageFunctions = [randomAdLib, randomOminousMessage, randomJoke]
-    const messageFunctions = [randomAdLib]
+    const messageFunctions = [randomOminousMessage]
     return getRandomElement(messageFunctions)();
 }
 
 function randomAdLib(){
-    console.log("AdLib function starting")
     const singularNouns = ["fish", "elephant", "boy", "girl", "berson", "banana", "tent pole", "grinkle-snout", "geometric horror"]
     const singularNoun1 = getRandomElement(singularNouns)
     const singularNoun2 = getRandomElement(singularNouns)
@@ -42,14 +41,41 @@ Behind them sat their ${thingy}, which watched peacefully and ate ${food}.`
 
 function randomOminousMessage(){
     console.log("Ominous function starting")
+    let num = Math.floor(Math.random() * 5)
+    while (num === 0 || num === 1){
+        num = Math.floor(Math.random() * 5)
+    }
+    const portants = ["white bird", "brown feather", "grotesque mockery of your life", "faint echo", "death", "birth", "seeker of knowledge"]
+    const portant = getRandomElement(portants)
+    const badThingys = ["doom", "hellfire", "pain", "torture", "violence",  "darkness", "fear", "hatred", "depravity", "degradation", "chaos", "spaghettification", "anger", "dissociation", "anxiety", "unbridled anarchy"]
+    let badThingy1 = getRandomElement(badThingys)
+    let badThingy2 = getRandomElement(badThingys)
+    let badThingy3 = firstLetterUpperCase(getRandomElement(badThingys))
+
+    while (badThingy1 === badThingy2 || badThingy1 === badThingy3 || badThingy2 === badThingy3){
+        badThingy1 = getRandomElement(badThingys)
+        badThingy2 = getRandomElement(badThingys)
+        badThingy3 = firstLetterUpperCase(getRandomElement(badThingys))
+    }
+
+    message = `In ${num} weeks you will see a ${portant}. It will be a portant of iminent ${badThingy1}. ${badThingy3} will rain down in your world and you will know the true meaning of ${badThingy2}.`
+    console.log(message)
+    return message
 }
 
 function randomJoke(){
-    console.log("Joke function starting")
+    console.log("Joke function starting") 
 }
 
 function getRandomElement(arr){
     return arr[Math.floor(Math.random() * arr.length)]
+}
+
+function firstLetterUpperCase(word){
+    word = word.split("")
+    word[0] = word[0].toUpperCase()
+    word = word.join("")
+    return word
 }
 
 randomMessage();
