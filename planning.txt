@@ -2,12 +2,42 @@ End goal: local webpage that displays a randomly filled in ad-lib, nonsensical j
 Built with Javascript, html, and css
 
 Steps:
-1. Plan project (This file)
-2. Set up html file and css file for styling
-    a. On startup it will say "Click button for new message"
-3. Set up version control with git and github
+XXX1. Plan project (This file)
+XXX2. Set up html file and css file for styling
+    XXXa. On startup it will say "Click button for new message"
+XXX3. Set up version control with git and github
 4. Set up logic in javascript for designing the message
-    a. Create a function to randomly pick which message generator to use
+    XXXa. Create a function to randomly pick which message generator to use
     b. Create a function for each type of message that constructs the message
     c. Create the strings that hold the words to be randomly selected and create a random selector function to select a random word from the required string.
 5. Set up code to update html with the new message and it's type.
+
+Adlib story vars:
+-A singular noun
+-A different singular noun
+-Something to be eaten
+-A grographical location (Ocean, Forest, etc.)
+-An object
+-A monster Appendage
+-A monster name
+-A verb ending in ed
+-A date
+-An adverb
+-A verb ending in ing
+
+
+AdLib story:
+
+There once was a (a singular noun "1") who ate too much (a food"1"). 
+They found themselves in a (geographical location"1") with nothing but a (object of some kind"1"). 
+While trying to find their way out, the (a singular noun "1") felt a (Appendage"1") touch them on their shoulder.
+They whipped around and saw (A name"1") behind them.
+
+"Hi! (A name"1")" said. "How are you doing today? Weird to see a (a singular noun "1") here. 
+
+The (a singular noun "1") replied "Don't you remember me? We (A verb ending with ed"1") beside each other back in (A date"1")"
+
+The creature flipped it's (Appendage"1") one more time and said "How could I remember you. You and I are the same (a singular noun "1")."
+
+Then the mirror shattered and revealed a (A singular noun"2") enjoying an afternoon of (An adverb"1") (A verb ending in -ing"1")
+Behind them sat their (Object"1"), which watched peacefully and ate (A food"1")
