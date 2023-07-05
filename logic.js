@@ -5,7 +5,7 @@ function pickRandomMessage(){
 
 function randomAdLib(){
     const type = "AdLib"
-    const singularNouns = ["fish", "elephant", "boy", "girl", "berson", "banana", "tent pole", "grinkle-snout", "geometric horror"]
+    const singularNouns = ["fish", "elephant", "boy", "girl", "person", "banana", "tent pole", "grinkle-snout", "geometric horror"]
     const singularNoun1 = getRandomElement(singularNouns)
     const singularNoun2 = getRandomElement(singularNouns)
     const foods = ["pizza", "soup", "human flesh", "nonhuman flesh", "radioactive waste", "leather", "ice cream", "grinkle-snout boogers"]
@@ -90,7 +90,7 @@ function firstLetterUpperCase(word){
     return word
 }
 
-function theStart(){
+function main(){
     let picture = document.getElementById("picture")
     let messageLocation = document.querySelector("h4")
     
@@ -110,4 +110,4 @@ function theStart(){
 }
 
 let button = document.getElementById("button")
-button.onclick = theStart
+button.onclick = main
