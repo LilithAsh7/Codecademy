@@ -9,25 +9,35 @@ const {
     updateInstanceInDatabase,
     deleteFromDatabasebyId,
     deleteAllFromDatabase,
-  } = require('./db.js')
+  } = require('./db.js');
 
 // Get an array of all minions
 minionsRouter.get("", (req, res, next) => {
-    res.send(getAllFromDatabase("minions"))
+    res.send(getAllFromDatabase("minions"));
 })
 
 minionsRouter.post("/", (req, res, next) => {
-    const newMinion = addToDatabase('minions', req.body)
-    res.status(201).send(newMinion)
+    const newMinion = addToDatabase('minions', req.body);
+    res.status(201).send(newMinion);
 })
 
 minionsRouter.get("/:minionId", (req, res, next) => {
-    res.send(req.minion)
+    res.send(req.minion);
 })
 
 minionsRouter.put("/:minionId", (req, res, next) => {
-    let minionUpdate = updateInstanceInDatabase('minions', req.body)
-    res.send(minionUpdate)
+    let minionUpdate = updateInstanceInDatabase('minions', req.body);
+    res.send(minionUpdate);
+})
+
+minionsRouter.delete("/:minionId", (req, res, next) => {
+    const deletedMinion = deleteFromDatabasebyId('minions', req.params.minionId);
+    if (deletedMinion) {
+        res.status(204);
+    } else {
+        res.status(500);
+    }
+    res.send();
 })
 
 /*
@@ -36,15 +46,15 @@ It simple checks if the requrested Id is valid and then sets the req.parameter t
 It then either continues the code with next() or it returns next with an error thus starting the error middleware 
 */
 minionsRouter.param("minionId", (req, res, next, id) => {
-    const minionId = id
-    const minion = getFromDatabaseById('minions', minionId)
+    const minionId = id;
+    const minion = getFromDatabaseById('minions', minionId);
     if (minion) {
-        req.minion = minion
-        next()
+        req.minion = minion;
+        next();
     } else {
-        const err = new Error("Minion not found")
-        err.status = 404
-        return next(err)
+        const err = new Error("Minion not found");
+        err.status = 404;
+        return next(err);
     }
 })
 
@@ -57,7 +67,7 @@ Then return next(errorVariableName)
 */
 minionsRouter.use((err, req, res, next) => {
     const status = err.status || 500;
-    res.status(status).send(err.message)
+    res.status(status).send(err.message);
 })
 
 module.exports = minionsRouter;
