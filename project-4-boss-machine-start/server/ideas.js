@@ -11,6 +11,10 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js')
 
+ideasRouter.get("/", (req, res, next) => {
+    res.send(getAllFromDatabase("ideas"));
+})
+
 /*
 Simple parameter handling middleware for the ideaId route
 It simple checks if the requrested Id is valid and then sets the req.parameter to the idea object
