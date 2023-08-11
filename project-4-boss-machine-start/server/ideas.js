@@ -11,8 +11,6 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js')
 
-module.exports = ideasRouter;
-
 /*
 Simple parameter handling middleware for the ideaId route
 It simple checks if the requrested Id is valid and then sets the req.parameter to the idea object
@@ -42,3 +40,5 @@ ideasRouter.use((err, req, res, next) => {
     const status = err.status || 500;
     res.status(status).send(err.message)
 })
+
+module.exports = ideasRouter;

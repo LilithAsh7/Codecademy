@@ -11,7 +11,7 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js')
 
-module.exports = minionsRouter;
+
 
 /*
 Simple parameter handling middleware for the miniondId route
@@ -42,3 +42,5 @@ minionsRouter.use((err, req, res, next) => {
     const status = err.status || 500;
     res.status(status).send(err.message)
 })
+
+module.exports = minionsRouter;

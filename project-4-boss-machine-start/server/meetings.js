@@ -11,8 +11,6 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js')
 
-module.exports = meetingsRouter;
-
 /* 
 Simple error middleware.
 To use create a new error object with an error message string as a paramter like so:
@@ -24,3 +22,5 @@ meetingsRouter.use((err, req, res, next) => {
     const status = err.status || 500;
     res.status(status).send(err.message)
 })
+
+module.exports = meetingsRouter;
