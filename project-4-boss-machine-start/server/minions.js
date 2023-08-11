@@ -16,6 +16,11 @@ minionsRouter.get("/", (req, res, next) => {
     res.send(getAllFromDatabase("minions"));
 })
 
+minionsRouter.post('/', (req, res, next) => {
+    const newMinion = addToDatabase('minions', req.body);
+    res.status(201).send(newMinion);
+});
+
 minionsRouter.get("/:minionId", (req, res, next) => {
     res.send(req.minion);
 })
