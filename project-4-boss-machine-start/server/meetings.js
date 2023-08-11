@@ -16,8 +16,18 @@ meetingsRouter.get("/", (req, res, next) => {
 })
 
 meetingsRouter.post("/", (req, res, next) => {
-    let newMeeting = addToDatabase("meetings", req.body);
+    const newMeeting = addToDatabase("meetings", req.body);
     res.send(newMeeting);
+})
+
+meetingsRouter.delete("/", (req, res, next) => {
+    const deletedMeetings = deleteAllFromDatabase("meetings")
+    if (deletedMeetings === []) {
+        res.status(204)
+    } else {
+        res.status(500)
+    }
+    res.send()
 })
 
 /* 
