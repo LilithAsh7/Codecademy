@@ -12,7 +12,7 @@ const {
   } = require('./db.js');
 
 // Get an array of all minions
-minionsRouter.get("", (req, res, next) => {
+minionsRouter.get("/", (req, res, next) => {
     res.send(getAllFromDatabase("minions"));
 })
 
