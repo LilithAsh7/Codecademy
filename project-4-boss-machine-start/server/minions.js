@@ -21,6 +21,10 @@ minionsRouter.post("/", (req, res, next) => {
     res.status(201).send(newMinion)
 })
 
+minionsRouter.get("/:minionId", (req, res, next) => {
+    res.send(req.minion)
+})
+
 /*
 Simple parameter handling middleware for the miniondId route
 It simple checks if the requrested Id is valid and then sets the req.parameter to the minion object
