@@ -20,6 +20,10 @@ ideasRouter.post("/", (req, res, next) => {
     res.status(201).send(newIdea);
 })
 
+ideasRouter.get("/:ideaId", (req, res, next) => {
+    res.send(req.idea)
+})
+
 /*
 Simple parameter handling middleware for the ideaId route
 It simple checks if the requrested Id is valid and then sets the req.parameter to the idea object
