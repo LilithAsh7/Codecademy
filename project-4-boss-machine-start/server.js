@@ -22,6 +22,16 @@ app.use(bodyParser.json())
 const apiRouter = require('./server/api');
 app.use("/api", apiRouter)
 
+// Routers for other paths
+const minionsRouter = require('./server/minions');
+app.use('/api/minions', minionsRouter);
+
+const ideasRouter = require('./server/ideas');
+app.use('/api/ideas', ideasRouter);
+
+const meetingsRouter = require('./server/meetings');
+app.use('/api/meetings', meetingsRouter);
+
 
 // This conditional is here for testing purposes:
 if (!module.parent) { 
