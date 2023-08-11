@@ -11,7 +11,9 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js')
 
-
+minionsRouter.get("", (req, res, next) => {
+    res.send(getAllFromDatabase("minions"))
+})
 
 /*
 Simple parameter handling middleware for the miniondId route
