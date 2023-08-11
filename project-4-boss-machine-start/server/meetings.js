@@ -11,6 +11,10 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js')
 
+meetingsRouter.get("/", (req, res, next) => {
+    res.send(getAllFromDatabase("meetings"));
+})
+
 /* 
 Simple error middleware.
 To use create a new error object with an error message string as a paramter like so:
