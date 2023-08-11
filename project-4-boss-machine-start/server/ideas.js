@@ -9,10 +9,15 @@ const {
     updateInstanceInDatabase,
     deleteFromDatabasebyId,
     deleteAllFromDatabase,
-  } = require('./db.js')
+  } = require('./db.js');
 
 ideasRouter.get("/", (req, res, next) => {
     res.send(getAllFromDatabase("ideas"));
+})
+
+ideasRouter.post("/", (req, res, next) => {
+    const newIdea = addToDatabase("ideas", req.body);
+    res.status(201).send(newIdea);
 })
 
 /*
@@ -21,15 +26,15 @@ It simple checks if the requrested Id is valid and then sets the req.parameter t
 It then either continues the code with next() or it returns next with an error thus starting the error middleware 
 */
 ideasRouter.param("ideaId", (req, res, next, id) => {
-    const ideaId = id
-    const idea = getFromDatabaseById('ideas', ideaId)
+    const ideaId = id;
+    const idea = getFromDatabaseById('ideas', ideaId);
     if (idea) {
-        req.idea = idea
-        next()
+        req.idea = idea;
+        next();
     } else {
-        const err = new Error("Idea not found")
-        err.status = 404
-        return next(err)
+        const err = new Error("Idea not found");
+        err.status = 404;
+        return next(err);
     }
 })
 
@@ -42,7 +47,7 @@ Then return next(errorVariableName)
 */
 ideasRouter.use((err, req, res, next) => {
     const status = err.status || 500;
-    res.status(status).send(err.message)
+    res.status(status).send(err.message);
 })
 
 module.exports = ideasRouter;
