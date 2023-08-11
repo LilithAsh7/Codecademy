@@ -25,6 +25,11 @@ minionsRouter.get("/:minionId", (req, res, next) => {
     res.send(req.minion)
 })
 
+minionsRouter.put("/:minionId", (req, res, next) => {
+    let minionUpdate = updateInstanceInDatabase('minions', req.body)
+    res.send(minionUpdate)
+})
+
 /*
 Simple parameter handling middleware for the miniondId route
 It simple checks if the requrested Id is valid and then sets the req.parameter to the minion object
