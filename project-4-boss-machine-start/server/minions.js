@@ -26,7 +26,7 @@ minionsRouter.param("minionId", (req, res, next, id) => {
         next()
     } else {
         const err = new Error("Minion not found")
-        err.status(404)
+        err.status = 404
         return next(err)
     }
 })
