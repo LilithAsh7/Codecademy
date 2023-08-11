@@ -26,7 +26,7 @@ ideasRouter.param("ideaId", (req, res, next, id) => {
         next()
     } else {
         const err = new Error("Idea not found")
-        err.status(404)
+        err.status = 404
         return next(err)
     }
 })
