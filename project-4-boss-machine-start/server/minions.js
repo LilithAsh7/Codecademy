@@ -11,10 +11,6 @@ const {
     deleteAllFromDatabase,
   } = require('./db');
 
-minionsRouter.get('/', (req, res, next) => {
-    res.send(getAllFromDatabase('minions'));
-});
-
 // Get an array of all minions
 minionsRouter.get("/", (req, res, next) => {
     res.send(getAllFromDatabase("minions"));
