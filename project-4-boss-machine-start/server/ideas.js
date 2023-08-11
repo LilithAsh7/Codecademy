@@ -11,6 +11,7 @@ const {
     deleteAllFromDatabase,
   } = require('./db.js');
 
+// Get an array of all ideas
 ideasRouter.get("/", (req, res, next) => {
     res.send(getAllFromDatabase("ideas"));
 })
@@ -21,7 +22,22 @@ ideasRouter.post("/", (req, res, next) => {
 })
 
 ideasRouter.get("/:ideaId", (req, res, next) => {
-    res.send(req.idea)
+    res.send(req.idea);
+})
+
+ideasRouter.put("/:ideaId", (req, res, next) => {
+    let updatedIdea = updateInstanceInDatabase("ideas", req.body);
+    res.send(updatedIdea);
+})
+
+ideasRouter.delete("/:ideaId", (req, res, next) => {
+    let deletedIdea = deleteFromDatabasebyId("ideas", req.params.ideaId);
+    if (deletedIdea) {
+        res.status(204);
+    } else {
+        res.status(500);
+    }
+    res.send();
 })
 
 /*
