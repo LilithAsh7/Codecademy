@@ -15,6 +15,11 @@ meetingsRouter.get("/", (req, res, next) => {
     res.send(getAllFromDatabase("meetings"));
 })
 
+meetingsRouter.post("/", (req, res, next) => {
+    let newMeeting = addToDatabase("meetings", req.body);
+    res.send(newMeeting);
+})
+
 /* 
 Simple error middleware.
 To use create a new error object with an error message string as a paramter like so:
@@ -24,7 +29,7 @@ Then return next(errorVariableName)
 */
 meetingsRouter.use((err, req, res, next) => {
     const status = err.status || 500;
-    res.status(status).send(err.message)
+    res.status(status).send(err.message);
 })
 
 module.exports = meetingsRouter;
