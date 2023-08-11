@@ -5,8 +5,8 @@ const minionsRouter = require('./minions.js');
 const ideasRouter = require('./ideas.js');
 const meetingsRouter = require('./meetings.js');
 
-apiRouter.use('/api/minions', minionsRouter);
-apiRouter.use('/api/ideas', ideasRouter);
-apiRouter.use('/api/meetings', meetingsRouter);
+apiRouter.use('/minions', minionsRouter);
+apiRouter.use('/ideas', ideasRouter);
+apiRouter.use('/meetings', meetingsRouter);
 
 module.exports = apiRouter;
