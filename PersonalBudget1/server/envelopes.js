@@ -9,10 +9,18 @@ envelopesRouter.get("/", (req, res, next) => {
 })
 
 envelopesRouter.post("/", (req, res, next) => {
-    const body = req.body
-    console.log(body)
-    const newEnv = addNewCategory(body.category);
+    const body = req.body.category
+    const newEnv = addNewCategory(body);
     res.status(201).send(newEnv);
 })
+
+/* THIS IS AN OPTIONAL VERSION OF THE ABOVE POST REQUEST THAT USES REQ.QUERY INSTEAD OF REQ.BODY
+envelopesRouter.post("/", (req, res, next) => {
+    const body = req.query.category
+    console.log(body)
+    const newEnv = addNewCategory(body);
+    res.status(201).json(newEnv);
+})
+*/
 
 module.exports = envelopesRouter;
