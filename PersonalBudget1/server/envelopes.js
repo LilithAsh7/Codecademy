@@ -1,7 +1,7 @@
 const express = require('express');
 const envelopesRouter = express.Router();
 
-const {addNewCategory, getAllFromDatabase} = require("./db.js")
+const {addNewCategory, getAllFromDatabase, getFromDatabaseByCategory} = require("./db.js")
 
 envelopesRouter.get("/", (req, res, next) => {
     const database = getAllFromDatabase()
@@ -22,5 +22,23 @@ envelopesRouter.post("/", (req, res, next) => {
     res.status(201).json(newEnv);
 })
 */
+
+envelopesRouter.get("/:category", (req, res, next) => {
+    
+    res.send(req.envelope);
+})
+
+envelopesRouter.param("category", (req, res, next, category) => {
+    const categoryToFind = category;
+    const envelope = getFromDatabaseByCategory(categoryToFind);
+    if (envelope) {
+        req.envelope = envelope;
+        next();
+    } else {
+        const err = new Error("Category not found");
+        err.status = 404;
+        return next(err);
+    }
+})
 
 module.exports = envelopesRouter;
