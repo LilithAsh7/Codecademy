@@ -9,7 +9,8 @@ envelopesRouter.get("/", (req, res, next) => {
 })
 
 envelopesRouter.post("/", (req, res, next) => {
-    const newEnv = addNewCategory(req.body);
+    const body = req.body
+    const newEnv = addNewCategory(body.category);
     res.status(201).send(newEnv);
 })
 
