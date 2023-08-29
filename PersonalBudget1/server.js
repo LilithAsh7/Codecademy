@@ -7,6 +7,9 @@ app.get("/", (req, res, next) => {
     res.send("Hello, World");
 })
 
+const apiRouter = require('./server/api');
+app.use("/api", apiRouter)
+
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`);
 });
