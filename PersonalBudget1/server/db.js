@@ -30,7 +30,20 @@ const addNewCategory = (newCategory) => {
     return(toAdd)
 }
 
+const getFromDatabaseByCategory = (lookUpCategory) => {
+    
+    let i = 0
+
+    while(i < envDb.length){
+        if(envDb[i].category == lookUpCategory){
+            return(envDb[i])
+        }
+        i++;
+    }
+}
+
 module.exports = {
     addNewCategory,
-    getAllFromDatabase
+    getAllFromDatabase,
+    getFromDatabaseByCategory
 }
