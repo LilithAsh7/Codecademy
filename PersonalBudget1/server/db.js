@@ -27,6 +27,7 @@ const addNewCategory = (newCategory) => {
                 "amount": 0
             }
     envDb.push(toAdd);
+    return(toAdd)
 }
 
 module.exports = {
