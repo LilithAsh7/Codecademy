@@ -47,7 +47,7 @@ envelopesRouter.delete("/:category", (req, res, next) => {
     } else {
         res.status(500);
     }
-    res.send(deletedEnvelope);
+    res.send();
 })
 
 envelopesRouter.param("category", (req, res, next, category) => {
