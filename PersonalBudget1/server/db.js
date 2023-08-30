@@ -56,9 +56,16 @@ const updateDatabase = (envelopeId, categoryUpdate, amount) => {
     }
 }
 
+const deleteFromDatabase = (envelopeId) => {
+    envelopeToDelete = envDb[envelopeId]
+    envDb.splice(envelopeId, 1);
+    return(envelopeToDelete)
+}
+
 module.exports = {
     addNewCategory,
     getAllFromDatabase,
     getFromDatabaseByCategory,
-    updateDatabase
+    updateDatabase,
+    deleteFromDatabase
 }
