@@ -1,7 +1,7 @@
 const express = require('express');
 const envelopesRouter = express.Router();
 
-const {addNewCategory, getAllFromDatabase, getFromDatabaseByCategory} = require("./db.js")
+const {addNewCategory, getAllFromDatabase, getFromDatabaseByCategory, updateDatabase} = require("./db.js")
 
 envelopesRouter.get("/", (req, res, next) => {
     const database = getAllFromDatabase()
@@ -9,8 +9,8 @@ envelopesRouter.get("/", (req, res, next) => {
 })
 
 envelopesRouter.post("/", (req, res, next) => {
-    const body = req.body.category
-    const newEnv = addNewCategory(body);
+    const category = req.body.category
+    const newEnv = addNewCategory(category);
     res.status(201).send(newEnv);
 })
 
@@ -24,15 +24,24 @@ envelopesRouter.post("/", (req, res, next) => {
 */
 
 envelopesRouter.get("/:category", (req, res, next) => {
-    
     res.send(req.envelope);
+})
+
+envelopesRouter.put("/:category", (req, res, next) => {
+    const categoryUpdate = req.body.category
+    const amountUpdate = req.body.amount
+    const finalUpdate = updateDatabase(req.envelopeId, categoryUpdate, amountUpdate)
+    res.send(finalUpdate)
 })
 
 envelopesRouter.param("category", (req, res, next, category) => {
     const categoryToFind = category;
-    const envelope = getFromDatabaseByCategory(categoryToFind);
+    const envelopeData = getFromDatabaseByCategory(categoryToFind);
+    const envelope = envelopeData[0];
+    const envelopeId = envelopeData[1];
     if (envelope) {
         req.envelope = envelope;
+        req.envelopeId = envelopeId;
         next();
     } else {
         const err = new Error("Category not found");
