@@ -6,7 +6,8 @@ const   {
         getAllFromDatabase, 
         getFromDatabaseByCategory, 
         updateDatabase, 
-        deleteFromDatabase
+        deleteFromDatabase,
+        transferAmountFromEnvelope
         } = require("./db.js")
 
 envelopesRouter.get("/", (req, res, next) => {
@@ -48,6 +49,14 @@ envelopesRouter.delete("/:category", (req, res, next) => {
         res.status(500);
     }
     res.send();
+})
+
+envelopesRouter.put("/transfer/:from/:to", (req, res, next) => {
+    const categoryFrom = req.params.from;
+    const categoryTo = req.params.to
+    const amount = req.body.amount
+    const moneyTransfered = transferAmountFromEnvelope(categoryFrom, categoryTo, amount)
+    res.send(moneyTransfered)
 })
 
 envelopesRouter.param("category", (req, res, next, category) => {
