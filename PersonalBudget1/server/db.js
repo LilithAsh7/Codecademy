@@ -59,7 +59,15 @@ const updateDatabase = (envelopeId, categoryUpdate, amount) => {
 const deleteFromDatabase = (envelopeId) => {
     envelopeToDelete = envDb[envelopeId]
     envDb.splice(envelopeId, 1);
-    return(envelopeToDelete)
+    return(envelopeToDelete);
+}
+
+const transferAmountFromEnvelope = (from, to, amount) => {
+    fromEnv = getFromDatabaseByCategory(from);
+    toEnv = getFromDatabaseByCategory(to);
+    envDb[fromEnv[1]].amount -= amount;
+    envDb[toEnv[1]].amount += amount;
+    return(envDb);
 }
 
 module.exports = {
@@ -67,5 +75,6 @@ module.exports = {
     getAllFromDatabase,
     getFromDatabaseByCategory,
     updateDatabase,
-    deleteFromDatabase
+    deleteFromDatabase,
+    transferAmountFromEnvelope
 }
