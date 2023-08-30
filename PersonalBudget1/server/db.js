@@ -31,19 +31,34 @@ const addNewCategory = (newCategory) => {
 }
 
 const getFromDatabaseByCategory = (lookUpCategory) => {
-    
-    let i = 0
+    let i = 0;
 
     while(i < envDb.length){
         if(envDb[i].category == lookUpCategory){
-            return(envDb[i])
+            return[envDb[i], i];
         }
         i++;
+    }
+}
+
+const updateDatabase = (envelopeId, categoryUpdate, amount) => {
+    envelopeToUpdate = envDb[envelopeId]
+    if(!categoryUpdate){
+        envelopeToUpdate.amount += amount;
+        return(envelopeToUpdate);
+    } else if(!amount){
+        envelopeToUpdate.category = categoryUpdate;
+        return(envelopeToUpdate);
+    } else {
+        envelopeToUpdate.amount += amount;
+        envelopeToUpdate.category = categoryUpdate;
+        return(envelopeToUpdate);
     }
 }
 
 module.exports = {
     addNewCategory,
     getAllFromDatabase,
-    getFromDatabaseByCategory
+    getFromDatabaseByCategory,
+    updateDatabase
 }
