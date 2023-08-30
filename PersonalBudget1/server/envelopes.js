@@ -1,7 +1,13 @@
 const express = require('express');
 const envelopesRouter = express.Router();
 
-const {addNewCategory, getAllFromDatabase, getFromDatabaseByCategory, updateDatabase} = require("./db.js")
+const   {
+        addNewCategory, 
+        getAllFromDatabase, 
+        getFromDatabaseByCategory, 
+        updateDatabase, 
+        deleteFromDatabase
+        } = require("./db.js")
 
 envelopesRouter.get("/", (req, res, next) => {
     const database = getAllFromDatabase()
@@ -32,6 +38,16 @@ envelopesRouter.put("/:category", (req, res, next) => {
     const amountUpdate = req.body.amount
     const finalUpdate = updateDatabase(req.envelopeId, categoryUpdate, amountUpdate)
     res.send(finalUpdate)
+})
+
+envelopesRouter.delete("/:category", (req, res, next) => {
+    const deletedEnvelope = deleteFromDatabase(req.envelopeId);
+    if (deletedEnvelope) {
+        res.status(204);
+    } else {
+        res.status(500);
+    }
+    res.send(deletedEnvelope);
 })
 
 envelopesRouter.param("category", (req, res, next, category) => {
